@@ -1,36 +1,29 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import { ArrowRight } from 'lucide-react';
 import { LinkButton } from '@/components/ui/Button';
-import { Reveal, RevealStagger, RevealItem } from '@/components/ui/Reveal';
+import { RevealStagger, RevealItem } from '@/components/ui/Reveal';
 import { siteConfig } from '@/lib/site';
-
-// Carga diferida del visual 3D — el Agente C creará HeroVisual.
-// ssr:false evita error en build si el archivo aún no existe en runtime SSR.
-const HeroVisual = dynamic(() => import('@/components/3d/HeroVisual'), {
-  ssr: false,
-  loading: () => null
-});
 
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-ink-50 pt-32 pb-24 md:pt-40 md:pb-32">
       {/* Grid sutil de fondo */}
       <div className="bg-grid absolute inset-0 opacity-60" aria-hidden />
-      {/* Halo brand decorativo a la derecha */}
+
+      {/* Halos decorativos en lugar del 3D (R3F 8 incompatible con React 18.3 actual) */}
       <div
-        className="halo absolute -right-32 top-10 h-[520px] w-[520px] bg-brand-500/30"
+        className="pointer-events-none absolute -right-40 top-20 h-[560px] w-[560px] rounded-full bg-brand-500/30 opacity-50 blur-[140px]"
         aria-hidden
       />
-
-      {/* Visual 3D detrás del texto, solo en desktop */}
       <div
-        className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 opacity-70 lg:block"
+        className="pointer-events-none absolute right-10 top-40 hidden h-[300px] w-[300px] rounded-full bg-brand-300/20 opacity-60 blur-[100px] lg:block"
         aria-hidden
-      >
-        <HeroVisual />
-      </div>
+      />
+      <div
+        className="pointer-events-none absolute -right-20 bottom-0 hidden h-[400px] w-[400px] rounded-full bg-brand-600/25 opacity-50 blur-[120px] lg:block"
+        aria-hidden
+      />
 
       <div className="container-page relative">
         <RevealStagger className="flex max-w-3xl flex-col items-start gap-7" stagger={0.1}>
