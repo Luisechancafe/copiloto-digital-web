@@ -1,9 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Space_Grotesk, Geist, Geist_Mono } from 'next/font/google';
 import { siteConfig } from '@/lib/site';
-import { SmoothScroll } from '@/components/layout/SmoothScroll';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
 import '@/styles/globals.css';
 
 const spaceGrotesk = Space_Grotesk({
@@ -49,11 +46,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Copiloto.Digital' }],
   creator: 'Copiloto.Digital',
   publisher: 'Copiloto.Digital',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false
-  },
+  formatDetection: { email: false, address: false, telephone: false },
   openGraph: {
     type: 'website',
     locale: 'es_ES',
@@ -61,14 +54,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name
-      }
-    ]
+    images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.name }]
   },
   twitter: {
     card: 'summary_large_image',
@@ -88,15 +74,13 @@ export const metadata: Metadata = {
       'max-snippet': -1
     }
   },
-  alternates: {
-    canonical: siteConfig.url
-  }
+  alternates: { canonical: siteConfig.url }
 };
 
 export const viewport: Viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: dark)', color: '#0a0a0c' },
-    { media: '(prefers-color-scheme: light)', color: '#0a0a0c' }
+    { media: '(prefers-color-scheme: light)', color: '#fafafa' }
   ],
   width: 'device-width',
   initialScale: 1,
@@ -112,34 +96,8 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${geistSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
-      <body className="bg-ink-50 font-sans text-white antialiased">
-        <SmoothScroll>
-          <Header />
-          <main id="main">{children}</main>
-          <Footer />
-        </SmoothScroll>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Organization',
-              name: siteConfig.name,
-              url: siteConfig.url,
-              logo: `${siteConfig.url}/logo.svg`,
-              description: siteConfig.description,
-              email: siteConfig.contactEmail,
-              telephone: siteConfig.contactPhone,
-              address: {
-                '@type': 'PostalAddress',
-                addressLocality: 'Granollers',
-                addressRegion: 'Cataluña',
-                addressCountry: 'ES'
-              },
-              sameAs: ['https://www.linkedin.com/in/luise-chancafe/']
-            })
-          }}
-        />
+      <body className="font-sans antialiased" suppressHydrationWarning>
+        {children}
       </body>
     </html>
   );

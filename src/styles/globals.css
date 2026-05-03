@@ -21,6 +21,213 @@
 }
 
 /* ──────────────────────────────────────────────────────────
+   v2 — tema oscuro/claro vía data-theme en <html> (next-themes)
+   Aislado del v1: las variables --v2-* solo las consume v2.
+   v1 no usa data-theme y queda hardcoded oscuro.
+   ────────────────────────────────────────────────────────── */
+html[data-theme='dark'] [data-v2],
+html:not([data-theme='light']) [data-v2] {
+  --v2-bg: #0a0a0c;
+  --v2-bg-elev: #131318;
+  --v2-bg-soft: #18181f;
+  --v2-fg: #fafafa;
+  --v2-fg-muted: #a8a8b3;
+  --v2-fg-subtle: #6e6e7a;
+  --v2-border: rgba(255, 255, 255, 0.08);
+  --v2-border-strong: rgba(255, 255, 255, 0.14);
+  --v2-line: rgba(255, 255, 255, 0.07);
+  --v2-line-strong: rgba(255, 255, 255, 0.18);
+  --v2-card: rgba(255, 255, 255, 0.03);
+  --v2-card-hover: rgba(255, 255, 255, 0.06);
+  --v2-accent: #eb3350;
+  --v2-accent-strong: #e61f3e;
+  --v2-accent-soft: rgba(235, 51, 80, 0.18);
+  --v2-grid: rgba(255, 255, 255, 0.045);
+  --v2-shadow-card: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+  --v2-mockup-bg: #0f0f12;
+  --v2-mockup-fg: #fafafa;
+  --v2-mockup-bubble-in: #1c1c22;
+  --v2-mockup-bubble-out: #1f4530;
+}
+
+html[data-theme='light'] [data-v2] {
+  --v2-bg: #fafafa;
+  --v2-bg-elev: #ffffff;
+  --v2-bg-soft: #f3f3f5;
+  --v2-fg: #0a0a0c;
+  --v2-fg-muted: #5a5a68;
+  --v2-fg-subtle: #8a8a98;
+  --v2-border: rgba(10, 10, 12, 0.08);
+  --v2-border-strong: rgba(10, 10, 12, 0.18);
+  --v2-line: rgba(10, 10, 12, 0.07);
+  --v2-line-strong: rgba(10, 10, 12, 0.2);
+  --v2-card: rgba(255, 255, 255, 0.85);
+  --v2-card-hover: #ffffff;
+  --v2-accent: #e61f3e;
+  --v2-accent-strong: #c1142f;
+  --v2-accent-soft: rgba(230, 31, 62, 0.1);
+  --v2-grid: rgba(10, 10, 12, 0.06);
+  --v2-shadow-card: 0 0 0 1px rgba(10, 10, 12, 0.05), 0 20px 40px -20px rgba(10, 10, 12, 0.12);
+  --v2-mockup-bg: #ffffff;
+  --v2-mockup-fg: #0a0a0c;
+  --v2-mockup-bubble-in: #f0f2f5;
+  --v2-mockup-bubble-out: #d9fdd3;
+}
+
+[data-v2] {
+  background: var(--v2-bg);
+  color: var(--v2-fg);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-v2] .v2-grid {
+  background-image:
+    linear-gradient(var(--v2-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--v2-grid) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* Dot grid pattern — la firma de Attio */
+[data-v2] .v2-dots {
+  background-image: radial-gradient(circle, var(--v2-grid) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+
+/* Mask gradients para fade radial de los backgrounds decorativos */
+[data-v2] .v2-mask-radial {
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at center, #000 10%, transparent 70%);
+  mask-image: radial-gradient(ellipse 60% 50% at center, #000 10%, transparent 70%);
+}
+[data-v2] .v2-mask-top {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);
+}
+[data-v2] .v2-mask-bottom {
+  -webkit-mask-image: linear-gradient(to top, #000 0%, #000 60%, transparent 100%);
+  mask-image: linear-gradient(to top, #000 0%, #000 60%, transparent 100%);
+}
+
+[data-v2] .v2-card {
+  background: var(--v2-card);
+  border: 1px solid var(--v2-border);
+  box-shadow: var(--v2-shadow-card);
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-v2] .v2-card:hover {
+  background: var(--v2-card-hover);
+  border-color: var(--v2-border-strong);
+  transform: translateY(-2px);
+}
+
+[data-v2] .v2-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--v2-line-strong), transparent);
+}
+
+[data-v2] .v2-btn-primary {
+  background: var(--v2-accent-strong);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+[data-v2] .v2-btn-primary:hover {
+  background: var(--v2-accent);
+  box-shadow: 0 0 30px -5px var(--v2-accent-soft);
+  transform: translateY(-1px);
+}
+
+[data-v2] .v2-btn-ghost {
+  background: transparent;
+  border: 1px solid var(--v2-border-strong);
+  color: var(--v2-fg);
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+[data-v2] .v2-btn-ghost:hover {
+  background: var(--v2-card);
+  border-color: var(--v2-fg);
+}
+
+[data-v2] .v2-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  border: 1px solid var(--v2-border);
+  background: var(--v2-card);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--v2-fg-muted);
+  letter-spacing: 0.04em;
+}
+
+/* Halo/glow decorativo */
+[data-v2] .v2-halo {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  filter: blur(120px);
+  opacity: 0.5;
+  background: radial-gradient(circle, var(--v2-accent-soft) 0%, transparent 70%);
+}
+
+/* Border glow card (Attio signature) */
+[data-v2] .v2-glow-card {
+  position: relative;
+  border-radius: 1rem;
+  background: var(--v2-card);
+  border: 1px solid var(--v2-border);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-v2] .v2-glow-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    transparent 0deg,
+    var(--v2-accent) 80deg,
+    transparent 160deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+[data-v2] .v2-glow-card:hover::before {
+  opacity: 1;
+  animation: rotate-glow 3s linear infinite;
+}
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes rotate-glow {
+  to { --angle: 360deg; }
+}
+
+/* ──────────────────────────────────────────────────────────
    Base
    ────────────────────────────────────────────────────────── */
 * {
