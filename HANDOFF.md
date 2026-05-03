@@ -1,7 +1,38 @@
 # HANDOFF — copiloto-digital-web
 
-> **Última sesión: 2026-05-03 (domingo tarde)** — sesión 21B + mini-fix R3F.
-> Web pública nueva para `copiloto.digital`, hospedada en Vercel.
+> **Última sesión: 2026-05-03 (domingo noche)** — Plan C bloqueado.
+> Web pública para `copiloto.digital`, hospedada en Vercel.
+
+---
+
+## 🛑 BLOQUEANTE — Plan C (opt out Turbopack en build) NO viable en Next 16
+
+**Intento**: añadir `--webpack` al script `build` para forzar Webpack en build de producción. Plan dictado tras confirmarse que React 19 no resolvió el bug.
+
+**Resultado**: la flag NO existe.
+
+```
+> next build --webpack
+error: unknown option '--webpack'
+```
+
+`next build --help` en Next 16.2.4 solo lista flags `--turbopack`/`--turbo` (opt-IN). No hay `--webpack` ni `--no-turbo`.
+
+**Confirmación del default**: `npm run build` muestra `▲ Next.js 16.2.4 (Turbopack)` en el banner. En Next 16, Turbopack ES el bundler de build por defecto y no se expone forma de optar fuera.
+
+**Env vars probadas (ninguna funciona)**: `TURBOPACK=0`, `NEXT_DISABLE_TURBOPACK=1`, `__NEXT_DISABLE_TURBOPACK=1`. Las 3 siguen ejecutando Turbopack según el banner.
+
+**Estado**: rollback completo. Branch `fix-react19-upgrade` queda igual que antes del intento. No se ha hecho commit ni push de este intento.
+
+**Rama Plan B disponible** (creada en task previo, ya no se usaba): [`fix-downgrade-next15`](https://github.com/Luisechancafe/copiloto-digital-web/tree/fix-downgrade-next15) en GitHub. Stack: Next 15.5 + React 18 + R3F 8.17. Build verde local. Sin validar en preview Vercel (polling cancelado).
+
+**Tres caminos posibles** (de menor a mayor coste):
+
+1. **Probar la rama `fix-downgrade-next15`** — Next 15 usa Webpack en build, esquiva el bug entero. Mismo stack que la sesión 21B salvo Next 15.0.3 → 15.5.x (sin CVE). Requiere disparar deploy preview en Vercel y validar consola.
+2. **Eliminar Framer Motion** de las secciones críticas. Si el bug es Framer + Turbopack + RSC, mover animaciones a CSS puro. Tailwind ya tiene `animate-fade-up`, `animate-float`, etc. Coste: re-trabajar 11 secciones.
+3. **Eliminar HeroVisual (R3F)** — sustituir hero 3D por SVG/canvas estático. Pierde el wow-factor del hero.
+
+Hasta nueva instrucción, **producción sigue rota** (Next 16 + React 18 en main, bug `ReactCurrentBatchConfig` en hidratación).
 
 ---
 
