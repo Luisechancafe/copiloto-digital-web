@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ──────────────────────────────────────────────────────────
+   Variables raíz — tokens semánticos
+   ────────────────────────────────────────────────────────── */
+:root {
+  --bg: #0a0a0c;
+  --bg-elev: #15151a;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-card-hover: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --fg: #fafafa;
+  --fg-muted: #b8b8c4;
+  --fg-subtle: #8a8a98;
+  --accent: #e61f3e;
+  --accent-soft: #eb3350;
+  --accent-glow: rgba(230, 31, 62, 0.4);
+}
+
+/* ──────────────────────────────────────────────────────────
+   Base
+   ────────────────────────────────────────────────────────── */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+  color-scheme: dark;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+/* ──────────────────────────────────────────────────────────
+   Utilidades de diseño
+   ────────────────────────────────────────────────────────── */
+@layer components {
+  /* Container con max-widths consistentes */
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-6 md:px-8 lg:px-12;
+  }
+
+  .container-narrow {
+    @apply mx-auto w-full max-w-5xl px-6 md:px-8;
+  }
+
+  /* Card oscura premium */
+  .card-dark {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm;
+    transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card-dark:hover {
+    @apply border-white/20 bg-white/[0.06];
+    transform: translateY(-4px);
+  }
+
+  /* Card clara para CTA invertido */
+  .card-light {
+    @apply rounded-2xl border border-black/10 bg-white text-ink-100;
+  }
+
+  /* Botón primario rojo */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-medium text-white transition-all duration-300;
+    box-shadow: 0 0 0 0 rgba(230, 31, 62, 0);
+  }
+
+  .btn-primary:hover {
+    @apply bg-brand-500;
+    box-shadow: 0 0 40px -5px rgba(230, 31, 62, 0.6);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  /* Botón secundario ghost oscuro */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.02] px-6 py-3 text-sm font-medium text-white/90 transition-all duration-300;
+  }
+
+  .btn-ghost:hover {
+    @apply border-white/30 bg-white/[0.06] text-white;
+  }
+
+  /* Botón claro (sobre fondo blanco) */
+  .btn-dark {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink-100 px-6 py-3 text-sm font-medium text-white transition-all duration-300;
+  }
+
+  .btn-dark:hover {
+    @apply bg-ink-50;
+    transform: translateY(-1px);
+  }
+
+  /* Tag / pill */
+  .tag {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-white/70;
+  }
+
+  /* Texto con gradiente */
+  .text-gradient {
+    @apply bg-gradient-to-br from-white via-white/90 to-white/60 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-brand {
+    background: linear-gradient(135deg, #fff 0%, #fbccd2 50%, #eb3350 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Halo decorativo */
+  .halo {
+    @apply pointer-events-none absolute -z-10 rounded-full opacity-30 blur-[120px];
+    background: radial-gradient(circle, rgba(230, 31, 62, 0.4) 0%, transparent 70%);
+  }
+
+  /* Grid background sutil */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  }
+
+  /* Separador con gradiente */
+  .divider-glow {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent;
+  }
+
+  /* Section spacing */
+  .section {
+    @apply relative py-24 md:py-32;
+  }
+
+  .section-tight {
+    @apply relative py-16 md:py-20;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   Reduce motion
+   ────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   Scrollbar minimalista
+   ────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
