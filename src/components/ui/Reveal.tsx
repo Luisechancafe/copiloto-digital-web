@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useInView, type Variants } from 'framer-motion';
+import { motion, useInView, type Variants } from 'motion/react';
 import { useRef } from 'react';
 
 interface RevealProps {
