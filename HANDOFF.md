@@ -1,7 +1,24 @@
 # HANDOFF — copiloto-digital-web
 
-> **Última sesión: 2026-05-03 (domingo)** — sesión 21B, autonomía total.
+> **Última sesión: 2026-05-03 (domingo tarde)** — sesión 21B + mini-fix R3F.
 > Web pública nueva para `copiloto.digital`, hospedada en Vercel.
+
+---
+
+## Fix mini-sesión 2026-05-03 — bug ReactCurrentOwner en `npm run dev`
+
+**Síntoma**: `Cannot read properties of undefined (reading 'ReactCurrentOwner')` al cargar la home en dev. Build de producción pasaba limpio.
+
+**Causa real (no era Turbopack)**: `npm install` resolvió `@react-three/drei@^9.114.3` a `9.122.0`. A partir de drei 9.115+ el peer dep saltó a `react ^19` + `@react-three/fiber ^9`, así que con React 18.3 + R3F 8.18 los internals divergen y drei intenta leer una API que no existe.
+
+**Fix aplicado**: pinear sin `^` a las versiones del lower bound original que sí coexisten:
+- `@react-three/drei` → **9.114.3** (exacto)
+- `@react-three/fiber` → **8.17.10** (exacto)
+- `three` → **0.170.0** (exacto)
+
+`--webpack` resultó innecesario tras el pin — Turbopack también compila limpio. `dev` script restaurado a `next dev` (Turbopack default, ~400ms ready).
+
+**Si en el futuro se quiere subir a R3F 9 + drei 9.122+**: hay que migrar a React 19 (Next 16 ya lo soporta). Pequeña refactor de tipos en `Reveal.tsx` y revisión de `framer-motion` para asegurar compatibilidad. No urgente.
 
 ---
 
