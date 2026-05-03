@@ -5,7 +5,52 @@
 
 ---
 
-## Fix mini-sesión 2026-05-03 — bug ReactCurrentOwner en `npm run dev`
+## Fix sesión 2026-05-03 (noche) — React 18→19 (rama `fix-react19-upgrade`)
+
+**Síntoma producción** (https://copiloto-digital-web.vercel.app): consola Chrome rompe en hidratación con `Cannot read properties of undefined (reading 'ReactCurrentBatchConfig')`.
+
+**Causa raíz**: Next 16 trae React 19 internamente (en `next/dist/compiled/react`). El `package.json` tenía `react@^18.3.1`. Framer Motion 11 se ataca a la API React 18 (`ReactCurrentBatchConfig`), pero el árbol de hidratación lo monta React 19 → instance mismatch → crash.
+
+**Fix aplicado en branch `fix-react19-upgrade`** (NO en main):
+- `react` y `react-dom` → 19 (`19.2.5`).
+- `@types/react` y `@types/react-dom` → 19.
+- Nuevo `src/types/react-three-fiber.d.ts`: shim que re-augmenta `React.JSX.IntrinsicElements` con los intrinsics de R3F 8 (`group`, `points`). R3F 8 sólo augmenta el viejo namespace `global.JSX` que React 19 ya no usa. Borrar este shim cuando subamos a R3F 9.
+- `JSX.Element` → `React.JSX.Element` en `ToolsSection.tsx` y `UseCasesSection.tsx`.
+
+**Validación local**:
+- `tsc --noEmit` limpio.
+- `npm run build` → 13 páginas estáticas, verde.
+- `npm run dev` (Turbopack) → ready en 336 ms, sin warnings ni errores en server logs.
+
+**Validación Vercel**:
+- Deploy preview READY: `https://copiloto-digital-rjl7fu18t-luisechancafes-projects.vercel.app` (alias canónico truncado: `copiloto-digital-web-git-fix-rea-1eeee1-luisechancafes-projects.vercel.app`).
+- Build Vercel completó en 26 s sin errores.
+- **PROTECCIÓN SSO ACTIVA**: la URL devuelve 401 sin login. Para abrirla, Chrome debe estar logueado en https://vercel.com con la cuenta `luisechancafe`. En incógnito pedirá auth.
+- **Validación cliente pendiente** (Luise): el bug `ReactCurrentBatchConfig` solo se reproducía en hidratación de browser. Build verde no demuestra que se haya arreglado en runtime.
+
+### Qué validar en el preview (tras login en Vercel)
+1. Abrir la URL preview en Chrome con cuenta Vercel logueada.
+2. DevTools → Console: confirmar **NO** aparece `ReactCurrentBatchConfig` ni `Cannot read properties of undefined`.
+3. Verificar visualmente: hero con partículas 3D, las 11 secciones renderizando, animaciones Framer Motion (Reveal stagger en cards) corriendo sin tartamudez.
+4. Probar `/precios`, `/casos-de-uso/peluquerias`, `/contacto`.
+
+### Si valida OK
+```bash
+cd /Volumes/LuiseDATA/CLAUDE/Proyectos/copiloto-digital-web
+git checkout main
+git merge fix-react19-upgrade --ff-only
+git push origin main
+# Vercel re-despliega producción automático
+```
+
+### Si sigue fallando
+- No mergear.
+- Capturar el error nuevo (mensaje exacto + stack trace) y pegarlo en una sesión.
+- Plan B: downgrade Next 16 → 15.5 (última 15.x sin CVE) y volver React 18, manteniendo el mismo árbol de versiones que la sesión 21B.
+
+---
+
+## Fix mini-sesión 2026-05-03 (tarde) — bug ReactCurrentOwner en `npm run dev`
 
 **Síntoma**: `Cannot read properties of undefined (reading 'ReactCurrentOwner')` al cargar la home en dev. Build de producción pasaba limpio.
 
