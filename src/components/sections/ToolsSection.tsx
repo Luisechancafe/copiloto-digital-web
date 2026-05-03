@@ -10,7 +10,7 @@ import {
   ContentIcon
 } from '@/components/icons/ToolIcons';
 
-type ToolIcon = (props: { className?: string }) => JSX.Element;
+type ToolIcon = (props: { className?: string }) => React.JSX.Element;
 
 interface Tool {
   key: string;

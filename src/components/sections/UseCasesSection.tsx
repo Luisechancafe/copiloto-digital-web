@@ -9,7 +9,7 @@ import {
   GestoriasIllustration
 } from '@/components/illustrations/SectorIllustrations';
 
-type IllustrationComponent = (props: { className?: string }) => JSX.Element;
+type IllustrationComponent = (props: { className?: string }) => React.JSX.Element;
 
 interface UseCase {
   slug: string;
