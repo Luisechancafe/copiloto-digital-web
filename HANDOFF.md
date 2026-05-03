@@ -5,9 +5,27 @@
 
 ---
 
+## URLs vivas
+
+| Recurso | URL |
+|---------|-----|
+| **Web pública (Vercel)** | https://copiloto-digital-web.vercel.app |
+| **GitHub repo** | https://github.com/Luisechancafe/copiloto-digital-web |
+| **Vercel project** | https://vercel.com/luisechancafes-projects/copiloto-digital-web |
+| Deploy URL específica | https://copiloto-digital-kqt752kkj-luisechancafes-projects.vercel.app (Auth Protected) |
+
+**Verificado en producción:**
+- `/` → 200 (title + description correctos)
+- `/precios` → 200
+- `/casos-de-uso/peluquerias` → 200
+- `/sitemap.xml` → 200 (XML válido)
+- `/robots.txt` → 200
+
+---
+
 ## Estado actual
 
-**Build de producción exitoso.** 13 páginas estáticas generadas. TypeScript estricto sin errores. Tamaños de bundle saludables.
+**Build de producción exitoso.** 13 páginas estáticas generadas. TypeScript estricto sin errores. Tamaños de bundle saludables. Next.js 16.2.4 (subido desde 15.0.3 por CVE bloqueante en Vercel).
 
 | Página                                | Tamaño | First Load JS |
 |---------------------------------------|--------|---------------|
@@ -91,18 +109,20 @@
 
 ## Pendiente de Luise
 
-> Ninguno bloquea ver la web en preview de Vercel. Acciones para completar lanzamiento real:
+> La web ya está pública en `https://copiloto-digital-web.vercel.app`. Nada bloquea mandar el link a clientes en demo. Acciones para completar lanzamiento real:
 
-### Inmediato (para usar en demos esta semana)
-1. **Validar la URL preview de Vercel** que aparecerá en este HANDOFF tras el deploy automático.
-2. **Probar en móvil real** (iPhone) — las animaciones, el scroll, el form, el menú.
-3. **Revisar copy** de las 11 secciones y los 4 casos de uso. Cambiar lo que no encaje con tu voz.
+### Inmediato (esta semana, demo con clientes)
+1. **Abrir https://copiloto-digital-web.vercel.app y revisar todo** — desktop + móvil. Pasa por las 11 secciones, los 4 casos de uso, precios y contacto.
+2. **Probar en iPhone** desde WhatsApp (abrir el link como lo abrirá un cliente). Las animaciones, el scroll, el form de contacto, el menú móvil.
+3. **Revisar copy** — algunas frases pueden no encajar con tu voz. Edita libremente en `src/components/sections/` (home) o `src/app/*/page.tsx` (resto).
 
 ### Antes de cambiar el DNS de copiloto.digital
-4. **Decidir cuándo cambiar DNS desde GoDaddy** (dominio actual sigue en Raiola). Cuando estés listo:
+4. **Decidir cuándo cambiar DNS desde GoDaddy** (dominio actual sigue en Raiola apuntando a la web vieja).
+5. **Añadir el dominio personalizado en Vercel**: Project Settings → Domains → Add `copiloto.digital` y `www.copiloto.digital`. Vercel mostrará las DNS records exactas que pedirá GoDaddy.
+6. **Cambiar DNS en GoDaddy** según lo que diga Vercel (típicamente):
    - Tipo `A`, Nombre `@`, Valor `76.76.21.21`
    - Tipo `CNAME`, Nombre `www`, Valor `cname.vercel-dns.com`
-5. **Añadir el dominio personalizado** en el panel de Vercel del proyecto y validar SSL.
+7. **Esperar propagación DNS** (1-24h). Vercel emite SSL automático.
 
 ### Antes de exponer al público real
 6. **Sustituir testimonios mock** por reales (3 cards en `TestimonialsSection.tsx` y 4 en `UseCaseLayout`).
