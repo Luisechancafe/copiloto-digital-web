@@ -1,7 +1,29 @@
 # HANDOFF — copiloto-digital-web
 
-> **Última sesión: 2026-05-03 (domingo tarde)** — sesión 21B + mini-fix R3F.
-> Web pública nueva para `copiloto.digital`, hospedada en Vercel.
+> **Última sesión: 2026-05-27** — promoción de v2 a raíz para deploy en copiloto.digital.
+
+---
+
+## Sesión 2026-05-27 — v2 promovida a raíz (branch `promote-v2-to-root`)
+
+**Objetivo:** dejar v2 lista para servir en `https://copiloto.digital` como nueva web pública. v1 retirada del repo.
+
+**Cambios estructurales:**
+- Borrado `src/app/(v1)/` completo (12 archivos eliminados).
+- Renombrado `src/app/v2/` → `src/app/(v2)/` (route group sin prefijo de URL). Ahora la home v2 vive en `/`, precios en `/precios`, etc.
+- Actualizados todos los `href` internos de `/v2/*` → `/*` en `HeaderV2`, `FooterV2`, `UseCaseLayoutV2`, `ConsultoriaSections`, `consultoria/page.tsx`.
+- `src/app/(v2)/layout.tsx`: quitado el metadata "Propuesta v2" (deja heredar el real del root layout), añadido `<script>` JSON-LD de Organization (que estaba en v1).
+- `src/app/sitemap.ts`: añadidas `/consultoria` y `/diagnostico` con priority 0.85.
+
+**Rutas finales (15):** `/`, `/precios`, `/consultoria`, `/diagnostico`, `/sobre-nosotros`, `/contacto`, `/casos-de-uso/{peluquerias,clinicas-dentales,inmobiliarias,gestorias}`, `/legal/{privacidad,terminos}`, `/sitemap.xml`, `/robots.txt`, `/_not-found`.
+
+**Verificado:** `npm run typecheck` limpio. `npm run build` ✓ 17 páginas estáticas. Curl manual a las 6 rutas críticas → 200.
+
+**Pendiente (post-deploy):**
+1. Push a Vercel → verificar preview deploy del branch.
+2. Merge a `main` → producción.
+3. Añadir custom domain `copiloto.digital` y `www.copiloto.digital` en Vercel project settings.
+4. Cambiar DNS en Raiola (registros A + CNAME). **NO tocar el MX** (email `hola@copiloto.digital`).
 
 ---
 

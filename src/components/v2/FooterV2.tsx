@@ -6,33 +6,33 @@ const COLUMNS: { title: string; links: { href: string; label: string }[] }[] = [
   {
     title: 'Producto',
     links: [
-      { href: '/v2', label: 'Visión' },
-      { href: '/v2/precios', label: 'Precios' },
-      { href: '/v2/precios#comparar', label: 'Comparar planes' }
+      { href: '/', label: 'Visión' },
+      { href: '/precios', label: 'Precios' },
+      { href: '/precios#comparar', label: 'Comparar planes' }
     ]
   },
   {
     title: 'Casos de uso',
     links: [
-      { href: '/v2/casos-de-uso/peluquerias', label: 'Peluquerías' },
-      { href: '/v2/casos-de-uso/clinicas-dentales', label: 'Clínicas dentales' },
-      { href: '/v2/casos-de-uso/inmobiliarias', label: 'Inmobiliarias' },
-      { href: '/v2/casos-de-uso/gestorias', label: 'Gestorías' }
+      { href: '/casos-de-uso/peluquerias', label: 'Peluquerías' },
+      { href: '/casos-de-uso/clinicas-dentales', label: 'Clínicas dentales' },
+      { href: '/casos-de-uso/inmobiliarias', label: 'Inmobiliarias' },
+      { href: '/casos-de-uso/gestorias', label: 'Gestorías' }
     ]
   },
   {
     title: 'Empresa',
     links: [
-      { href: '/v2/sobre-nosotros', label: 'Sobre nosotros' },
-      { href: '/v2/contacto', label: 'Contacto' },
+      { href: '/sobre-nosotros', label: 'Sobre nosotros' },
+      { href: '/contacto', label: 'Contacto' },
       { href: `mailto:${siteConfig.contactEmail}`, label: siteConfig.contactEmail }
     ]
   },
   {
     title: 'Legal',
     links: [
-      { href: '/v2/legal/privacidad', label: 'Privacidad' },
-      { href: '/v2/legal/terminos', label: 'Términos' }
+      { href: '/legal/privacidad', label: 'Privacidad' },
+      { href: '/legal/terminos', label: 'Términos' }
     ]
   }
 ];
