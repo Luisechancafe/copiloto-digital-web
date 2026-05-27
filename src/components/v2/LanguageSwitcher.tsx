@@ -5,22 +5,19 @@ import { ChevronDown } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 interface Lang {
-  code: 'ES' | 'EN' | 'CA' | 'EU';
+  code: 'ES' | 'EU' | 'CA' | 'EN';
   label: string;
   flag: string;
+  available: boolean;
 }
 
 const LANGS: Lang[] = [
-  { code: 'ES', label: 'Español', flag: '🇪🇸' },
-  { code: 'EN', label: 'English', flag: '🇬🇧' },
-  { code: 'CA', label: 'Català', flag: '🇪🇸' },
-  { code: 'EU', label: 'Euskera', flag: '🇪🇸' }
+  { code: 'ES', label: 'Español', flag: '🇪🇸', available: true },
+  { code: 'EU', label: 'Euskera', flag: '🇪🇸', available: false },
+  { code: 'CA', label: 'Català', flag: '🇪🇸', available: false },
+  { code: 'EN', label: 'English', flag: '🇬🇧', available: false }
 ];
 
-/**
- * Selector de idioma — placeholder visual.
- * Solo ES funciona realmente; el resto se marca como "próximamente" en consola.
- */
 export function LanguageSwitcher() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<Lang>(LANGS[0]);
@@ -75,15 +72,21 @@ export function LanguageSwitcher() {
           >
             {LANGS.map((lang) => {
               const isActive = lang.code === active.code;
+              const isDisabled = !lang.available;
               return (
                 <li key={lang.code}>
                   <button
                     type="button"
+                    disabled={isDisabled}
                     onClick={() => {
+                      if (isDisabled) return;
                       setActive(lang);
                       setOpen(false);
                     }}
-                    className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors"
+                    title={isDisabled ? 'Próximamente' : undefined}
+                    className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors ${
+                      isDisabled ? 'cursor-not-allowed opacity-50' : ''
+                    }`}
                     style={{
                       background: isActive ? 'var(--v2-accent-soft)' : 'transparent',
                       color: isActive ? 'var(--v2-accent)' : 'var(--v2-fg)'
@@ -94,13 +97,21 @@ export function LanguageSwitcher() {
                     </span>
                     <span className="font-semibold">{lang.code}</span>
                     <span
-                      className="text-sm"
+                      className="flex-1 text-sm"
                       style={{
                         color: isActive ? 'var(--v2-accent)' : 'var(--v2-fg-muted)'
                       }}
                     >
                       {lang.label}
                     </span>
+                    {isDisabled && (
+                      <span
+                        className="text-[10px] font-medium uppercase tracking-wider"
+                        style={{ color: 'var(--v2-fg-subtle)' }}
+                      >
+                        Próximamente
+                      </span>
+                    )}
                   </button>
                 </li>
               );
