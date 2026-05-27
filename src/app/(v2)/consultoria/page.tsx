@@ -25,11 +25,11 @@ export default function V2ConsultoriaPage() {
         highlight={['ejecución.', 'estrategia.']}
         subtitle="La plataforma automatiza operaciones diarias mientras la consultoría diseña la estrategia. Servicios independientes o integrados — sin proveedores que no se hablan entre sí."
       >
-        <Link href="/v2/diagnostico" className="v2-btn-primary group justify-center text-base">
+        <Link href="/diagnostico" className="v2-btn-primary group justify-center text-base">
           Diagnóstico gratuito
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Link>
-        <Link href="/v2/contacto" className="v2-btn-ghost justify-center text-base">
+        <Link href="/contacto" className="v2-btn-ghost justify-center text-base">
           Hablemos directamente
         </Link>
       </PageHero>

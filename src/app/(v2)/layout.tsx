@@ -1,16 +1,16 @@
+import { ThemeProvider } from '@/components/v2/ThemeProvider';
+import { HeaderV2 } from '@/components/v2/HeaderV2';
+import { FooterV2 } from '@/components/v2/FooterV2';
 import { siteConfig } from '@/lib/site';
-import { SmoothScroll } from '@/components/layout/SmoothScroll';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
 
-export default function V1Layout({ children }: { children: React.ReactNode }) {
+export default function V2Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-ink-50 text-white">
-      <SmoothScroll>
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
-      </SmoothScroll>
+    <ThemeProvider>
+      <div data-v2>
+        <HeaderV2 />
+        <main>{children}</main>
+        <FooterV2 />
+      </div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -33,6 +33,6 @@ export default function V1Layout({ children }: { children: React.ReactNode }) {
           })
         }}
       />
-    </div>
+    </ThemeProvider>
   );
 }

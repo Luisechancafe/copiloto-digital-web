@@ -9,10 +9,10 @@ import { LogoV2 } from './LogoV2';
 import { siteConfig } from '@/lib/site';
 
 const NAV = [
-  { href: '/v2/consultoria', label: 'Consultoría' },
-  { href: '/v2/casos-de-uso/peluquerias', label: 'Casos de uso' },
-  { href: '/v2/precios', label: 'Precios' },
-  { href: '/v2/contacto', label: 'Contacto' }
+  { href: '/consultoria', label: 'Consultoría' },
+  { href: '/casos-de-uso/peluquerias', label: 'Casos de uso' },
+  { href: '/precios', label: 'Precios' },
+  { href: '/contacto', label: 'Contacto' }
 ];
 
 export function HeaderV2() {
@@ -44,7 +44,7 @@ export function HeaderV2() {
     >
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-6 md:h-[68px] md:px-8">
         <Link
-          href="/v2"
+          href="/"
           className="flex items-center gap-2.5 transition-opacity hover:opacity-80"
         >
           <LogoV2 className="h-7 w-7" />
@@ -72,7 +72,7 @@ export function HeaderV2() {
         <div className="flex items-center gap-2 md:gap-3">
           <ThemeToggle />
           <Link
-            href="/v2/diagnostico"
+            href="/diagnostico"
             className="v2-btn-ghost hidden text-sm md:inline-flex"
             style={{ padding: '0.5rem 1rem' }}
           >
@@ -125,7 +125,7 @@ export function HeaderV2() {
             </Link>
           ))}
           <Link
-            href="/v2/diagnostico"
+            href="/diagnostico"
             onClick={() => setOpen(false)}
             className="v2-btn-ghost mt-3 justify-center"
           >

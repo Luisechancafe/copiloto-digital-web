@@ -85,7 +85,7 @@ export function UseCaseLayoutV2({ sector, hero, steps, metrics, testimonial }: P
           Probar 30 días gratis
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Link>
-        <Link href="/v2/casos-de-uso/peluquerias" className="v2-btn-ghost justify-center text-base">
+        <Link href="/casos-de-uso/peluquerias" className="v2-btn-ghost justify-center text-base">
           Ver otros sectores
         </Link>
       </PageHero>

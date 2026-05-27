@@ -122,7 +122,7 @@ function ServiceCard({
       </ul>
 
       <Link
-        href="/v2/diagnostico"
+        href="/diagnostico"
         className="group mt-8 inline-flex items-center gap-1.5 self-start text-sm font-medium transition-colors"
         style={{ color: 'var(--v2-accent)' }}
       >

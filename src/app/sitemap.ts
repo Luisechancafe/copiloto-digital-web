@@ -8,6 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     { path: '/', priority: 1.0, change: 'weekly' as const },
     { path: '/precios', priority: 0.9, change: 'monthly' as const },
+    { path: '/consultoria', priority: 0.85, change: 'monthly' as const },
+    { path: '/diagnostico', priority: 0.85, change: 'monthly' as const },
     { path: '/sobre-nosotros', priority: 0.7, change: 'monthly' as const },
     { path: '/contacto', priority: 0.8, change: 'monthly' as const },
     { path: '/casos-de-uso/peluquerias', priority: 0.8, change: 'monthly' as const },
