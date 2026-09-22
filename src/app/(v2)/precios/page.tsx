@@ -87,16 +87,27 @@ export default function V2PreciosPage() {
 }
 
 const ROWS = [
-  { label: 'Mensajes WhatsApp', basic: 'Ilimitados', pro: 'Ilimitados', elite: 'Ilimitados' },
-  { label: 'Idiomas atendidos', basic: '2', pro: '5', elite: '5' },
-  { label: 'Números conectados', basic: '1', pro: '3', elite: 'Ilimitados' },
+  // Conversaciones: PLAN_CONVERSATIONS en src/lib/plan-features.ts
+  { label: 'Conversaciones al mes', basic: '500', pro: '1.500', elite: '3.000' },
+  // La voz solo habla es-ES y el selector del panel marca el resto «Próximamente»
+  { label: 'Idiomas atendidos', basic: 'Español', pro: 'Español', elite: 'Español' },
+  // Evolution API: una instancia de WhatsApp por cuenta, en los tres planes
+  { label: 'Números de WhatsApp', basic: '1', pro: '1', elite: '1' },
   { label: 'CRM con scoring IA', basic: '✓', pro: '✓', elite: '✓' },
   { label: 'Agenda automática', basic: '—', pro: '✓', elite: '✓' },
-  { label: 'Recordatorios SMS', basic: '—', pro: '✓', elite: '✓' },
+  // El cron de recordatorios manda WhatsApp y email; SMS no hay
+  { label: 'Recordatorios de cita', basic: '—', pro: 'WhatsApp y email', elite: 'WhatsApp y email' },
+  { label: 'Sincronización de agenda', basic: '—', pro: 'Google Calendar', elite: 'Google Calendar' },
   { label: 'Recupera clientes inactivos', basic: '—', pro: '✓', elite: '✓' },
-  { label: 'Posts para redes/mes', basic: '—', pro: '30', elite: 'Ilimitados' },
-  { label: 'Llamadas IA con número español', basic: '—', pro: '—', elite: '✓' },
-  { label: 'Equipo (usuarios)', basic: '1', pro: '3', elite: 'Ilimitados' },
-  { label: 'Soporte', basic: 'Email', pro: 'Prioritario', elite: 'Gestor dedicado' },
-  { label: 'API y webhooks', basic: '—', pro: '—', elite: '✓' }
+  // Generar contenido es de Pro; programarlo (scheduled_posts) es solo de Élite
+  { label: 'Contenido para redes', basic: '—', pro: 'Generación', elite: 'Generación y calendario' },
+  // PLAN_VOICE_MINUTES: la voz bajó a Pro el 22-sep-2026
+  { label: 'Llamadas IA con número español', basic: '—', pro: '150 min/mes', elite: '300 min/mes' },
+  { label: 'Minutos de voz de más', basic: '—', pro: 'Pack de 100 min por 25 €', elite: 'Pack de 100 min por 25 €' },
+  // PLAN_MAX_AGENTS
+  { label: 'Asistentes IA', basic: '1', pro: '3', elite: 'Sin límite' },
+  // La tabla de equipos dice Pro 3 / Élite 10, no ilimitado
+  { label: 'Equipo (usuarios)', basic: '1', pro: '3', elite: '10' },
+  { label: 'Soporte', basic: 'Email', pro: 'Email y chat', elite: 'Prioritario' }
+  // Fuera «API y webhooks»: no hay API pública para clientes.
 ];

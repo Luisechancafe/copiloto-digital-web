@@ -97,9 +97,9 @@ export default function V2PeluqueriasPage() {
         title="Conecta con lo que ya usas."
         integrations={[
           { emoji: '📅', name: 'Google Calendar' },
-          { emoji: '📆', name: 'Outlook' },
-          { emoji: '💇', name: 'Booksy' },
-          { emoji: '✂️', name: 'Treatwell' },
+          { emoji: '📍', name: 'Google My Business' },
+          { emoji: '📸', name: 'Instagram' },
+          { emoji: '📘', name: 'Facebook' },
           { emoji: '📊', name: 'Excel / Sheets' },
           { emoji: '💳', name: 'Stripe' },
           { emoji: '📲', name: 'WhatsApp Business' },
@@ -120,7 +120,7 @@ export default function V2PeluqueriasPage() {
           },
           {
             q: '¿Cómo sabe qué huecos tengo libres?',
-            a: 'Conecta con tu calendario (Google, Outlook, Booksy, Treatwell) y consulta en tiempo real antes de ofrecer.'
+            a: 'Lleva su propia agenda con tu horario, tus descansos y tus días cerrados, y consulta los huecos libres antes de ofrecer nada. Si usas Google Calendar, cada cita aparece también allí.'
           },
           {
             q: '¿Funciona si tengo varios profesionales?',

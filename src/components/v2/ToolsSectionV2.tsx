@@ -39,7 +39,7 @@ const TOOLS: Tool[] = [
     key: 'agenda',
     label: 'Agenda',
     title: 'Apunta citas y manda recordatorios',
-    body: 'Tu calendario se llena solo. Conecta con Google Calendar, Outlook o tu sistema actual. Confirmaciones y recordatorios automáticos.',
+    body: 'Tu calendario se llena solo. Agenda propia con tu horario y tus descansos, replicada en Google Calendar si lo usas. Confirmaciones y recordatorios automáticos.',
     Icon: CalendarIcon
   },
   {
