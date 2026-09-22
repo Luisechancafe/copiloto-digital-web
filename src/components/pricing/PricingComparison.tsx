@@ -21,9 +21,9 @@ const groups: FeatureGroup[] = [
   {
     category: 'WhatsApp',
     rows: [
-      { feature: 'Mensajes ilimitados', basico: true, pro: true, elite: true },
-      { feature: 'Atiende en 5 idiomas', basico: true, pro: true, elite: true },
-      { feature: 'Números conectados', basico: '1', pro: '3', elite: 'Ilimitados' }
+      { feature: 'Conversaciones al mes', basico: '500', pro: '1.500', elite: '3.000' },
+      { feature: 'Idiomas', basico: 'Español', pro: 'Español', elite: 'Español' },
+      { feature: 'Números de WhatsApp conectados', basico: '1', pro: '1', elite: '1' }
     ]
   },
   {
@@ -38,8 +38,8 @@ const groups: FeatureGroup[] = [
     category: 'Agenda',
     rows: [
       { feature: 'Agenda automática', basico: false, pro: true, elite: true },
-      { feature: 'Recordatorios SMS', basico: false, pro: true, elite: true },
-      { feature: 'Sincronización con Google/Outlook', basico: false, pro: true, elite: true }
+      { feature: 'Recordatorios de cita', basico: false, pro: 'WhatsApp y email', elite: 'WhatsApp y email' },
+      { feature: 'Sincronización con Google Calendar', basico: false, pro: true, elite: true }
     ]
   },
   {
@@ -52,30 +52,31 @@ const groups: FeatureGroup[] = [
   {
     category: 'Contenido',
     rows: [
-      { feature: 'Posts para redes al mes', basico: '10', pro: '30', elite: 'Ilimitados' },
+      { feature: 'Calendario editorial de publicaciones', basico: false, pro: false, elite: true },
       { feature: 'Adaptación por canal', basico: false, pro: true, elite: true }
     ]
   },
   {
     category: 'Voz IA',
     rows: [
-      { feature: 'Llamadas IA con número español', basico: false, pro: false, elite: true },
-      { feature: 'Filtrado y derivación inteligente', basico: false, pro: false, elite: true }
+      { feature: 'Llamadas IA con número español', basico: '—', pro: '150 min/mes', elite: '300 min/mes' },
+      { feature: 'Minutos de voz extra', basico: '—', pro: '0,25 €/min o pack de 100 min por 25 €', elite: '0,25 €/min o pack de 100 min por 25 €' },
+      { feature: 'Filtrado y derivación inteligente', basico: false, pro: true, elite: true }
     ]
   },
   {
     category: 'Equipo',
     rows: [
-      { feature: 'Usuarios incluidos', basico: '1', pro: '3', elite: 'Ilimitados' },
+      { feature: 'Usuarios incluidos', basico: '1', pro: '3', elite: '10' },
       { feature: 'Roles y permisos', basico: false, pro: true, elite: true }
     ]
   },
   {
     category: 'Soporte',
     rows: [
-      { feature: 'Canal de soporte', basico: 'Email', pro: 'Email prioritario', elite: 'Gestor dedicado' },
+      { feature: 'Canal de soporte', basico: 'Email', pro: 'Email y chat', elite: 'Prioritario' },
       { feature: 'Tiempo de respuesta', basico: '24h', pro: '4h', elite: '1h' },
-      { feature: 'API y webhooks', basico: false, pro: false, elite: true }
+      { feature: 'Asistentes IA incluidos', basico: '1', pro: '3', elite: 'Sin límite' }
     ]
   }
 ];

@@ -27,10 +27,10 @@ const PLANS: Plan[] = [
     features: [
       'WhatsApp 24/7',
       'CRM básico',
-      '1 número',
+      '1 número de WhatsApp',
       'Soporte por email'
     ],
-    excluded: ['Agenda automática', 'Voz IA'],
+    excluded: ['Agenda automática'],
     cta: 'Empezar Básico'
   },
   {
@@ -44,10 +44,10 @@ const PLANS: Plan[] = [
       'Agenda automática',
       'Recupera clientes',
       'Contenido para redes',
-      'Hasta 3 números',
-      'Soporte prioritario'
+      'Voz IA · 150 min/mes incluidos',
+      'Soporte por email y chat'
     ],
-    excluded: ['Voz IA'],
+    excluded: [],
     cta: 'Empezar Pro'
   },
   {
@@ -57,9 +57,9 @@ const PLANS: Plan[] = [
     yearly: 199,
     features: [
       'Todo lo de Pro',
-      'Voz IA con número español',
-      'Equipo ilimitado',
-      'Gestor dedicado'
+      'Voz IA · 300 min/mes · número español',
+      'Equipo hasta 10 personas',
+      'Asistentes IA sin límite y soporte prioritario'
     ],
     excluded: [],
     cta: 'Empezar Élite'
@@ -146,6 +146,15 @@ export function PricingSectionV2() {
             <PlanCard key={plan.name} plan={plan} yearly={yearly} index={i} />
           ))}
         </div>
+
+        <p
+          className="mx-auto mt-8 max-w-2xl text-center text-xs"
+          style={{ color: 'var(--v2-fg-muted)' }}
+        >
+          Precios con IVA incluido. Los minutos de voz se renuevan cada mes y no se
+          acumulan de un mes al siguiente. Si se agotan, puedes seguir a 0,25 €/min
+          comprando un pack de 100 minutos por 25 €.
+        </p>
       </div>
     </section>
   );

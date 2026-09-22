@@ -136,11 +136,11 @@ export default function V2PeluqueriasPage() {
           },
           {
             q: '¿Cuesta más por número de mensajes?',
-            a: 'No. Atiende mil o un millón al mismo precio. La cuota es fija al mes.'
+            a: 'La cuota es fija al mes: no se factura por mensaje. Cada plan incluye un número de conversaciones (500 en Básico, 1.500 en Pro y 3.000 en Élite), de sobra para el día a día de una peluquería.'
           },
           {
             q: '¿Cómo cancelo si no me convence?',
-            a: 'Desde tu panel, en un clic. Sin llamadas. Los primeros 30 días son gratis sin tarjeta.'
+            a: 'Desde tu panel, en un clic. Sin llamadas ni penalizaciones.'
           }
         ]}
       />

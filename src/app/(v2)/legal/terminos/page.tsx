@@ -15,6 +15,14 @@ export default function V2TerminosPage() {
         Renovación mensual o anual procesada por Stripe. Cancelación en un clic desde tu panel. Sin penalizaciones.
         Los precios anunciados se mantienen para clientes activos durante 12 meses.
       </p>
+      <p>
+        Los planes Pro y Élite incluyen una cuota mensual de minutos de llamada con la Recepcionista IA
+        (150 y 300 minutos respectivamente). Esos minutos se renuevan en cada ciclo de facturación y no
+        se acumulan. El consumo por encima de la cuota se paga por adelantado comprando un pack de
+        minutos; no se factura a posteriori. Si la cuota se agota y no hay pack contratado, la
+        Recepcionista IA deja de atender llamadas hasta que se recargue o empiece un ciclo nuevo.
+        El resto del servicio no se ve afectado.
+      </p>
       <h2>4. Periodo de prueba</h2>
       <p>30 días gratis sin tarjeta. Al terminar, eliges si continuar y pasas la tarjeta. Si no, los datos se borran a los 30 días.</p>
       <h2>5. Uso aceptable</h2>
