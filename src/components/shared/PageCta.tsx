@@ -18,7 +18,7 @@ interface PageCtaProps {
  */
 export function PageCta({
   title = 'Empieza hoy. Tu negocio cambia mañana.',
-  subtitle = '30 días gratis. Sin tarjeta. Cancela cuando quieras.',
+  subtitle = '30 días gratis. No se cobra nada hasta el día 31. Cancela cuando quieras.',
   primaryLabel = 'Probar 30 días gratis',
   secondaryHref = '/contacto',
   secondaryLabel = 'Hablar con nosotros'

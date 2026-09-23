@@ -60,12 +60,7 @@ export const USE_CASES = {
       { value: '8h', label: 'menos al teléfono' },
       { value: '+22', label: 'citas extra/mes' },
       { value: '0', label: 'olvidos' }
-    ],
-    testimonial: {
-      name: 'Marta R.',
-      role: 'Peluquería en Granollers',
-      quote: 'Antes perdíamos 4-5 citas al día por no contestar a tiempo. Ahora se confirman solas mientras corto pelo.'
-    }
+    ]
   },
   'clinicas-dentales': {
     sector: 'clínica',
@@ -85,12 +80,7 @@ export const USE_CASES = {
       { value: '+18%', label: 'agenda llena' },
       { value: '−45%', label: 'no presentados' },
       { value: '24/7', label: 'disponibilidad' }
-    ],
-    testimonial: {
-      name: 'Joan T.',
-      role: 'Clínica dental Sabadell',
-      quote: 'La primera semana ya nos había recuperado dos pacientes que llevaban meses sin venir.'
-    }
+    ]
   },
   inmobiliarias: {
     sector: 'inmobiliaria',
@@ -110,12 +100,7 @@ export const USE_CASES = {
       { value: '3x', label: 'leads cualificados' },
       { value: '−60%', label: 'tiempo en mensajes' },
       { value: '24/7', label: 'respuesta' }
-    ],
-    testimonial: {
-      name: 'Eva M.',
-      role: 'Inmobiliaria Badalona',
-      quote: 'Recibo el lead ya filtrado: presupuesto, zona y urgencia. Sólo llamo a los que valen la pena.'
-    }
+    ]
   },
   gestorias: {
     sector: 'gestoría',
@@ -135,12 +120,7 @@ export const USE_CASES = {
       { value: '−70%', label: 'llamadas repetidas' },
       { value: '+5h', label: 'al día para casos' },
       { value: '100%', label: 'plazos avisados' }
-    ],
-    testimonial: {
-      name: 'Antoni F.',
-      role: 'Gestoría Mataró',
-      quote: 'Antes pasaba media mañana respondiendo lo mismo. Ahora mi copiloto contesta y yo me dedico a casos.'
-    }
+    ]
   }
 } as const;
 

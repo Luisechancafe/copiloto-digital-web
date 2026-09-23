@@ -47,7 +47,7 @@ export function HeroV2() {
             >
               <span className="v2-tag">
                 <Sparkles className="h-3 w-3" style={{ color: 'var(--v2-accent)' }} />
-                Nuevo · 30 días gratis sin tarjeta
+                Nuevo · 30 días gratis
               </span>
             </motion.div>
 
@@ -105,7 +105,7 @@ export function HeroV2() {
               className="mt-8 text-sm"
               style={{ color: 'var(--v2-fg-subtle)' }}
             >
-              Sin tarjeta · Sin compromisos · Cancela en un clic
+              No se cobra nada hasta el día 31 · Cancela en un clic
             </motion.p>
           </div>
 

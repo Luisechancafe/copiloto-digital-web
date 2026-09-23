@@ -17,7 +17,7 @@ export default function V2PreciosPage() {
         eyebrow="Precios"
         title="Sin sorpresas. Cancela cuando quieras."
         highlight={['Cancela', 'cuando', 'quieras.']}
-        subtitle="30 días gratis en cualquier plan. Sin tarjeta. El precio que eliges se queda fijo, suba o baje el catálogo."
+        subtitle="30 días gratis. No se cobra nada hasta el día 31. Cancela cuando quieras. El precio que eliges se queda fijo, suba o baje el catálogo."
       >
         <Link href={siteConfig.links.appSignup} className="v2-btn-primary group justify-center text-base">
           Empezar gratis

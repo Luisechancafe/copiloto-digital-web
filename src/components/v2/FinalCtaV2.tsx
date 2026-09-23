@@ -45,7 +45,7 @@ export function FinalCtaV2() {
           className="mx-auto mt-6 max-w-xl text-lg md:text-xl"
           style={{ color: 'var(--v2-fg-muted)' }}
         >
-          30 días gratis. Sin tarjeta. Cancela cuando quieras.
+          30 días gratis. No se cobra nada hasta el día 31. Cancela cuando quieras.
           <br />
           En menos de una hora tu negocio responde solo.
         </motion.p>

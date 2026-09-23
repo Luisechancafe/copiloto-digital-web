@@ -14,12 +14,12 @@ interface FaqItem {
 const items: FaqItem[] = [
   {
     question: '¿Pago algo durante la prueba?',
-    answer: 'No. Sin tarjeta los primeros 30 días. Empiezas, pruebas y decides después.'
+    answer: 'Sí, la tarjeta se pide al empezar la prueba, pero no se cobra nada hasta el día 31. Si cancelas antes, no pagas.'
   },
   {
     question: '¿Qué pasa al terminar la prueba?',
     answer:
-      'Si te gusta, eliges plan y nos pasas la tarjeta. Si no, no pasa nada — tus datos se borran a los 30 días automáticamente.'
+      'Si te gusta, no tienes que hacer nada: el día 31 se cobra el plan que elegiste. Si no, cancelas antes y tus datos se borran a los 30 días.'
   },
   {
     question: '¿Puedo cambiar de plan?',

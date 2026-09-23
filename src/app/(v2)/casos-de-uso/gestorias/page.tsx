@@ -11,7 +11,7 @@ export default function V2GestoriasPage() {
   const data = USE_CASES.gestorias;
   return (
     <>
-      <UseCaseLayoutV2 sector={data.sector} hero={data.hero} steps={[...data.steps]} metrics={[...data.metrics]} testimonial={data.testimonial} />
+      <UseCaseLayoutV2 sector={data.sector} hero={data.hero} steps={[...data.steps]} metrics={[...data.metrics]} />
       <FinalCtaV2 />
     </>
   );

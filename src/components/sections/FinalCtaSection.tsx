@@ -29,7 +29,7 @@ export function FinalCtaSection() {
 
           <RevealItem>
             <p className="max-w-xl text-lg leading-relaxed text-ink-700">
-              Sin tarjeta. Sin compromisos. Cancela cuando quieras.
+              30 días gratis. No se cobra nada hasta el día 31. Cancela cuando quieras.
             </p>
           </RevealItem>
 

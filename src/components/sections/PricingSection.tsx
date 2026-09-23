@@ -78,7 +78,7 @@ export function PricingSection() {
         <SectionHeader
           eyebrow="Planes"
           title="Elige el tuyo"
-          subtitle="30 días gratis en cualquier plan. Sin tarjeta."
+          subtitle="30 días gratis. No se cobra nada hasta el día 31. Cancela cuando quieras."
         />
 
         {/* Toggle mensual/anual */}

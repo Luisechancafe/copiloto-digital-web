@@ -4,11 +4,13 @@ import { animate, useInView } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { DotGrid } from './DotGrid';
 
+// Nada de porcentajes ni multiplicadores: no hay ningún cliente midiéndolos
+// todavía. Aquí solo va lo que el producto hace de verdad.
 const METRICS = [
-  { value: '24/7', label: 'Disponibilidad', sub: 'Tu negocio nunca duerme' },
-  { value: '10x', label: 'Velocidad', sub: 'Más rápido que responder a mano', count: 10, suffix: 'x' },
-  { value: '+30%', label: 'Recuperación', sub: 'Más clientes recuperados al mes', count: 30, prefix: '+', suffix: '%' },
-  { value: '0€', label: 'Por mensaje', sub: 'Atiende mil o un millón, mismo precio' }
+  { value: '24/7', label: 'Disponibilidad', sub: 'Contesta también de noche y en festivos' },
+  { value: 'Segundos', label: 'Tiempo de respuesta', sub: 'No deja a nadie esperando' },
+  { value: 'Tu número', label: 'WhatsApp de siempre', sub: 'Se conecta el que ya usas' },
+  { value: '0€', label: 'Por mensaje', sub: 'Cuota fija: atiende mil o un millón' }
 ];
 
 export function NumbersSectionV2() {
@@ -35,7 +37,7 @@ export function NumbersSectionV2() {
               letterSpacing: '-0.03em'
             }}
           >
-            Números reales en tu negocio.
+            Así cambia tu día a día.
           </h2>
         </div>
 

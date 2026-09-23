@@ -12,7 +12,7 @@ export default function V2TerminosPage() {
       <p>Plataforma SaaS de automatizaciones con IA para negocios locales: WhatsApp, agenda, voz, contenido y CRM.</p>
       <h2>3. Suscripción y pagos</h2>
       <p>
-        Renovación mensual o anual procesada por Stripe. Cancelación en un clic desde tu panel. Sin penalizaciones.
+        Suscripción mensual procesada por Stripe. Cancelación en un clic desde tu panel. Sin penalizaciones.
         Los precios anunciados se mantienen para clientes activos durante 12 meses.
       </p>
       <p>
@@ -24,7 +24,15 @@ export default function V2TerminosPage() {
         El resto del servicio no se ve afectado.
       </p>
       <h2>4. Periodo de prueba</h2>
-      <p>30 días gratis sin tarjeta. Al terminar, eliges si continuar y pasas la tarjeta. Si no, los datos se borran a los 30 días.</p>
+      <p>
+        30 días gratis en cualquier plan. La tarjeta se pide al empezar la prueba, pero no se cobra
+        nada hasta el día 31. Puedes cancelar cuando quieras desde tu panel; si cancelas antes de que
+        termine la prueba no se te cobra nada y los datos se borran a los 30 días.
+      </p>
+      <p>
+        Durante la prueba, la Recepcionista IA incluye 30 minutos de llamada, no los del plan
+        contratado. Al realizarse el primer cobro pasas a la cuota mensual de tu plan.
+      </p>
       <h2>5. Uso aceptable</h2>
       <p>
         No spam, no envíos masivos no consentidos, no contenido ilegal, no usurpación de identidad. Cumple las normas de WhatsApp Business y la ley aplicable.

@@ -23,7 +23,6 @@ export default function V2PeluqueriasPage() {
         hero={data.hero}
         steps={[...data.steps]}
         metrics={[...data.metrics]}
-        testimonial={data.testimonial}
       />
 
       <ComparePanel
@@ -100,10 +99,10 @@ export default function V2PeluqueriasPage() {
           { emoji: '📍', name: 'Google My Business' },
           { emoji: '📸', name: 'Instagram' },
           { emoji: '📘', name: 'Facebook' },
-          { emoji: '📊', name: 'Excel / Sheets' },
-          { emoji: '💳', name: 'Stripe' },
           { emoji: '📲', name: 'WhatsApp Business' },
-          { emoji: '📧', name: 'Mailchimp' }
+          { emoji: '📧', name: 'Email' },
+          { emoji: '🌐', name: 'WordPress' },
+          { emoji: '📈', name: 'Google Analytics' }
         ]}
       />
 

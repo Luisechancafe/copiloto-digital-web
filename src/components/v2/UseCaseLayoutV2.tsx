@@ -69,10 +69,9 @@ interface Props {
   };
   steps: readonly Step[];
   metrics: readonly Metric[];
-  testimonial: { name: string; role: string; quote: string };
 }
 
-export function UseCaseLayoutV2({ sector, hero, steps, metrics, testimonial }: Props) {
+export function UseCaseLayoutV2({ sector, hero, steps, metrics }: Props) {
   return (
     <>
       <PageHero
@@ -154,26 +153,6 @@ export function UseCaseLayoutV2({ sector, hero, steps, metrics, testimonial }: P
         </div>
       </section>
 
-      {/* Testimonio */}
-      <section
-        className="relative py-28 md:py-36"
-        style={{ background: 'var(--v2-bg-soft)' }}
-      >
-        <div className="mx-auto w-full max-w-3xl px-6 text-center md:px-8">
-          <svg className="mx-auto mb-8 h-8 w-8" fill="none" viewBox="0 0 24 24" style={{ color: 'var(--v2-accent)' }}>
-            <path d="M9.5 7H5a2 2 0 00-2 2v4a2 2 0 002 2h2v3h2.5V9zM18.5 7H14a2 2 0 00-2 2v4a2 2 0 002 2h2v3h2.5V9z" stroke="currentColor" strokeWidth="1.5" />
-          </svg>
-          <p
-            className="font-display text-2xl leading-snug md:text-3xl"
-            style={{ color: 'var(--v2-fg)' }}
-          >
-            “{testimonial.quote}”
-          </p>
-          <p className="mt-6 text-sm" style={{ color: 'var(--v2-fg-muted)' }}>
-            <span className="font-medium" style={{ color: 'var(--v2-fg)' }}>{testimonial.name}</span> · {testimonial.role}
-          </p>
-        </div>
-      </section>
     </>
   );
 }

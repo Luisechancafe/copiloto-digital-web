@@ -28,7 +28,7 @@ export function HeroSection() {
       <div className="container-page relative">
         <RevealStagger className="flex max-w-3xl flex-col items-start gap-7" stagger={0.1}>
           <RevealItem>
-            <span className="tag">Sin tarjeta · Cancela cuando quieras</span>
+            <span className="tag">No se cobra hasta el día 31 · Cancela cuando quieras</span>
           </RevealItem>
 
           <RevealItem>

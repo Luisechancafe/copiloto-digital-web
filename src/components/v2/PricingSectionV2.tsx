@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Check, Minus } from 'lucide-react';
 import { siteConfig } from '@/lib/site';
 import { WordReveal } from './WordReveal';
@@ -11,7 +11,6 @@ interface Plan {
   name: string;
   pitch: string;
   monthly: number;
-  yearly: number;
   highlight?: boolean;
   features: string[];
   excluded: string[];
@@ -23,28 +22,26 @@ const PLANS: Plan[] = [
     name: 'Básico',
     pitch: 'Para empezar a no perder mensajes',
     monthly: 59,
-    yearly: 47,
     features: [
       'WhatsApp 24/7',
       'CRM básico',
       '1 número de WhatsApp',
       'Soporte por email'
     ],
-    excluded: ['Agenda automática'],
+    excluded: ['Agenda automática', 'Voz IA'],
     cta: 'Empezar Básico'
   },
   {
     name: 'Pro',
-    pitch: 'El que eligen 8 de cada 10',
+    pitch: 'El plan completo para el día a día',
     monthly: 119,
-    yearly: 95,
     highlight: true,
     features: [
       'Todo lo de Básico',
       'Agenda automática',
       'Recupera clientes',
       'Contenido para redes',
-      'Voz IA · 150 min/mes incluidos',
+      'Voz IA · 150 min/mes · número español',
       'Soporte por email y chat'
     ],
     excluded: [],
@@ -54,7 +51,6 @@ const PLANS: Plan[] = [
     name: 'Élite',
     pitch: 'Para los que también quieren atender llamadas',
     monthly: 249,
-    yearly: 199,
     features: [
       'Todo lo de Pro',
       'Voz IA · 300 min/mes · número español',
@@ -67,8 +63,6 @@ const PLANS: Plan[] = [
 ];
 
 export function PricingSectionV2() {
-  const [yearly, setYearly] = useState(false);
-
   return (
     <section
       id="precios"
@@ -96,54 +90,14 @@ export function PricingSectionV2() {
             className="mt-6 text-lg"
             style={{ color: 'var(--v2-fg-muted)' }}
           >
-            30 días gratis en cualquier plan. Sin tarjeta.
+            30 días gratis. No se cobra nada hasta el día 31. Cancela cuando quieras.
           </p>
 
-          {/* Toggle mensual/anual */}
-          <div
-            className="mx-auto mt-10 inline-flex rounded-full p-1"
-            style={{
-              background: 'var(--v2-card)',
-              border: '1px solid var(--v2-border)'
-            }}
-          >
-            <button
-              type="button"
-              onClick={() => setYearly(false)}
-              className="relative rounded-full px-5 py-2 text-sm font-medium transition-colors"
-              style={{
-                color: !yearly ? 'var(--v2-fg)' : 'var(--v2-fg-muted)',
-                background: !yearly ? 'var(--v2-bg)' : 'transparent'
-              }}
-            >
-              Mensual
-            </button>
-            <button
-              type="button"
-              onClick={() => setYearly(true)}
-              className="relative rounded-full px-5 py-2 text-sm font-medium transition-colors"
-              style={{
-                color: yearly ? 'var(--v2-fg)' : 'var(--v2-fg-muted)',
-                background: yearly ? 'var(--v2-bg)' : 'transparent'
-              }}
-            >
-              Anual{' '}
-              <span
-                className="ml-1 rounded-full px-1.5 py-0.5 text-[10px]"
-                style={{
-                  background: 'var(--v2-accent-soft)',
-                  color: 'var(--v2-accent)'
-                }}
-              >
-                −20%
-              </span>
-            </button>
-          </div>
         </div>
 
         <div className="mt-16 grid gap-6 lg:grid-cols-3">
           {PLANS.map((plan, i) => (
-            <PlanCard key={plan.name} plan={plan} yearly={yearly} index={i} />
+            <PlanCard key={plan.name} plan={plan} index={i} />
           ))}
         </div>
 
@@ -160,7 +114,7 @@ export function PricingSectionV2() {
   );
 }
 
-function PlanCard({ plan, yearly, index }: { plan: Plan; yearly: boolean; index: number }) {
+function PlanCard({ plan, index }: { plan: Plan; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
@@ -208,18 +162,12 @@ function PlanCard({ plan, yearly, index }: { plan: Plan; yearly: boolean; index:
             lineHeight: 1
           }}
         >
-          {yearly ? plan.yearly : plan.monthly}€
+          {plan.monthly}€
         </span>
         <span className="text-sm" style={{ color: 'var(--v2-fg-muted)' }}>
           /mes
         </span>
       </div>
-      {yearly && (
-        <p className="mt-1 text-xs" style={{ color: 'var(--v2-fg-subtle)' }}>
-          Antes {plan.monthly}€/mes · facturación anual
-        </p>
-      )}
-
       <Link
         href={siteConfig.links.appSignup}
         className={plan.highlight ? 'v2-btn-primary mt-8 justify-center text-sm' : 'v2-btn-ghost mt-8 justify-center text-sm'}
