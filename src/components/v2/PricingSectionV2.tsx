@@ -26,6 +26,7 @@ const PLANS: Plan[] = [
       'WhatsApp 24/7',
       'CRM básico',
       '1 número de WhatsApp',
+      '5 ideas de contenido al mes',
       'Soporte por email'
     ],
     excluded: ['Agenda automática', 'Voz IA'],
@@ -40,7 +41,7 @@ const PLANS: Plan[] = [
       'Todo lo de Básico',
       'Agenda automática',
       'Recupera clientes',
-      'Contenido para redes',
+      'Ideas de contenido sin límite',
       'Voz IA · 150 min/mes · número español',
       'Soporte por email y chat'
     ],

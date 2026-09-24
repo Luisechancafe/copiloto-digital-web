@@ -99,8 +99,11 @@ const ROWS = [
   { label: 'Recordatorios de cita', basic: '—', pro: 'WhatsApp y email', elite: 'WhatsApp y email' },
   { label: 'Sincronización de agenda', basic: '—', pro: 'Google Calendar', elite: 'Google Calendar' },
   { label: 'Recupera clientes inactivos', basic: '—', pro: '✓', elite: '✓' },
-  // Generar contenido es de Pro; programarlo (scheduled_posts) es solo de Élite
-  { label: 'Contenido para redes', basic: '—', pro: 'Generación', elite: 'Generación y calendario' },
+  // Sesión 35: Ideas entra en Básico con 5 al mes (PLAN_IDEAS_PER_MONTH en la
+  // app). Escribir el texto es una cosa; publicarlo solo en redes sigue siendo
+  // la automatización de Élite.
+  { label: 'Ideas de contenido', basic: '5 al mes', pro: 'Sin límite', elite: 'Sin límite' },
+  { label: 'Publicar en redes solo', basic: '—', pro: '—', elite: 'Sí' },
   // PLAN_VOICE_MINUTES: la voz bajó a Pro el 22-sep-2026
   { label: 'Llamadas IA con número español', basic: '—', pro: '150 min/mes', elite: '300 min/mes' },
   { label: 'Minutos de voz de más', basic: '—', pro: 'Pack de 100 min por 25 €', elite: 'Pack de 100 min por 25 €' },
